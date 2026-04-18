@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AirelineBookingSystem.Flights.Infrastructure\AirelineBookingSystem.Flights.Infrastructure.csproj" />
+    <ProjectReference Include="..\AirelineBookingSystem.Notifications.Core\AirelineBookingSystem.Notifications.Core.csproj" />
+    <ProjectReference Include="..\AirelineBookingSystem.Notifications.Infrastructure\AirelineBookingSystem.Notifications.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
