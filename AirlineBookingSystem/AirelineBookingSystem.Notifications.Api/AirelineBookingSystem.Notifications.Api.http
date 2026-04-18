@@ -1,0 +1,6 @@
+@AirelineBookingSystem.Notifications.Api_HostAddress = http://localhost:5279
+
+GET {{AirelineBookingSystem.Notifications.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
