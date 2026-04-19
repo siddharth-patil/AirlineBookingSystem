@@ -12,7 +12,7 @@ namespace AirelineBookingSystem.Payements.Core.Entities
         public Guid BookingId { get; set; }
         public decimal Amount { get; set; }
         //public string Currency { get; set; }
-        public DateTime PayementDate { get; set; }
+        public DateTime PaymentDate { get; set; }
         //public string PayementMethod { get; set; } //Credit Card, PayPal, etc.
     }
 }

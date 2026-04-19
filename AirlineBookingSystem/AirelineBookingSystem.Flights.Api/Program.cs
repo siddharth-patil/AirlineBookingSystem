@@ -22,6 +22,7 @@ var assemblies = new Assembly[]
     typeof(DeleteFlightHandler).Assembly,
     typeof(GetAllFlightsHandler).Assembly,
 };
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assemblies));
 
 // Application services
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();

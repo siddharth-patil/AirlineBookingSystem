@@ -21,15 +21,15 @@ namespace AirelineBookingSystem.Payements.Infrastructure.Repositories
 
         public async Task ProcessPaymentAsync(Payement payment)
         {
-            const string sql = @"INSERT INTO Payements (Id, BookingId, Amount, PayementDate) 
-                                VALUES (@Id, @BookingId, @Amount, @PayementDate)";
+            const string sql = @"INSERT INTO Payments (Id, BookingId, Amount, PaymentDate) 
+                                VALUES (@Id, @BookingId, @Amount, @PaymentDate)";
 
             await _dbConnetion.ExecuteAsync(sql, payment);
         }
 
         public async Task RefundPayementAsync(Guid id)
         {
-            const string sql = @"DELETE FROM Payements WHERE Id = @Id";
+            const string sql = @"DELETE FROM Payments WHERE Id = @Id";
             await _dbConnetion.ExecuteAsync(sql, new { Id = id });
         }
     }

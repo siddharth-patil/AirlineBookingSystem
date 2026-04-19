@@ -21,8 +21,8 @@ namespace AirelineBookingSystem.Bookings.Infrastructure.Repositories
 
         public async Task AddBookingAsync(Booking booking)
         {
-            const string sql = @"INSERT INTO Bookings (Id, FlightId, PassangerName, SeatNumber, BookingDate)
-                VALUES (@Id, @FlightId, @PassangerName, @SeatNumber, @BookingDate)";
+            const string sql = @"INSERT INTO Bookings (Id, FlightId, PassengerName, SeatNumber, BookingDate)
+                VALUES (@Id, @FlightId, @PassengerName, @SeatNumber, @BookingDate)";
 
             await _dbConnection.ExecuteAsync(sql, booking);
         }

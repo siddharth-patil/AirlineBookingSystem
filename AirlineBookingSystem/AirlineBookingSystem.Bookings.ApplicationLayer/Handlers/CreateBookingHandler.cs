@@ -24,7 +24,7 @@ namespace AirlineBookingSystem.Bookings.Application.Handlers
             {
                 Id = Guid.NewGuid(),
                 FlightId = request.FlightId,
-                PassangerName = request.PassengerName,
+                PassengerName = request.PassengerName,
                 SeatNumber = request.SeatNumber,
                 BookingDate = DateTime.UtcNow
             };

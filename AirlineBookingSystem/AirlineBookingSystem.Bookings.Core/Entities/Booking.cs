@@ -10,7 +10,7 @@ namespace AirlineBookingSystem.Bookings.Core.Entities
     {
         public Guid Id { get; set; }
         public Guid FlightId { get; set; }
-        public string PassangerName{ get; set; }
+        public string PassengerName{ get; set; }
         public DateTime BookingDate { get; set; }
         public string SeatNumber { get; set; }
     }

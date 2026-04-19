@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AirelineBookingSystem.Flights.Infrastructure\AirelineBookingSystem.Flights.Infrastructure.csproj" />
+    <ProjectReference Include="..\AirelineBookingSystem.Notifications.Application\AirelineBookingSystem.Notifications.Application.csproj" />
     <ProjectReference Include="..\AirelineBookingSystem.Notifications.Core\AirelineBookingSystem.Notifications.Core.csproj" />
     <ProjectReference Include="..\AirelineBookingSystem.Notifications.Infrastructure\AirelineBookingSystem.Notifications.Infrastructure.csproj" />
   </ItemGroup>
