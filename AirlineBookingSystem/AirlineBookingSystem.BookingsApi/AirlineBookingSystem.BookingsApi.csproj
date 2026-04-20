@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="9.1.0" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="9.1.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
@@ -14,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AirelineBookingSystem.Bookings.Infrastructure\AirelineBookingSystem.Bookings.Infrastructure.csproj" />
     <ProjectReference Include="..\AirlineBookingSystem.Bookings.ApplicationLayer\AirlineBookingSystem.Bookings.Application.csproj" />
+    <ProjectReference Include="..\AirlineBookingSystem.BuildingBlocks\AirlineBookingSystem.BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>

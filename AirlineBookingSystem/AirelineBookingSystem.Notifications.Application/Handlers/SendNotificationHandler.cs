@@ -1,6 +1,7 @@
 ﻿using AirelineBookingSystem.Notifications.Application.Commands;
 using AirelineBookingSystem.Notifications.Application.Interfaces;
 using AirelineBookingSystem.Notifications.Core.Entities;
+using MassTransit;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace AirelineBookingSystem.Notifications.Application.Handlers
     public record SendNotificationHandler: IRequestHandler<SendNotificationCommand>
     {
         private readonly INotificationService _notificationService;
+        
 
         public SendNotificationHandler(INotificationService notificationService)
         {

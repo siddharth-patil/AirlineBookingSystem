@@ -1,6 +1,9 @@
+using AirelineBookingSystem.Payements.Application.Consumers;
 using AirelineBookingSystem.Payements.Application.Handlers;
 using AirelineBookingSystem.Payements.Core.Repositories;
 using AirelineBookingSystem.Payements.Infrastructure.Repositories;
+using AirlineBookingSystem.BuildingBlocks.Common;
+using MassTransit;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Reflection;
@@ -26,6 +29,22 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assemblies
 
 // Application services
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+
+// MassTransit
+builder.Services.AddMassTransit(config =>
+{
+    // Mark this as the consumer assembly
+    config.AddConsumer<FlightBookedConsumer>();
+
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+        cfg.ReceiveEndpoint(EventBusConstant.FlightBookedQueue, c =>
+        {
+            c.ConfigureConsumer<FlightBookedConsumer>(ctx);
+        });
+    });
+});
 
 // Add sql connection to the services
 builder.Services.AddScoped<IDbConnection>(sp =>

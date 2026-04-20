@@ -1,12 +1,14 @@
+using AirelineBookingSystem.Notifications.Application.Consumers;
+using AirelineBookingSystem.Notifications.Application.Handlers;
+using AirelineBookingSystem.Notifications.Application.Interfaces;
+using AirelineBookingSystem.Notifications.Application.Services;
 using AirelineBookingSystem.Notifications.Core.Repositories;
 using AirelineBookingSystem.Notifications.Infrastructure.Repositories;
-using AirelineBookingSystem.Notifications.Application.Handlers;
-
+using AirlineBookingSystem.BuildingBlocks.Common;
+using MassTransit;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Reflection;
-using AirelineBookingSystem.Notifications.Application.Interfaces;
-using AirelineBookingSystem.Notifications.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,22 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assemblies
 // Application services
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+
+// MassTransit
+builder.Services.AddMassTransit(config =>
+{
+    // Mark this as the consumer assembly
+    config.AddConsumer<PaymenProcessedConsumer>();
+
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+        cfg.ReceiveEndpoint(EventBusConstant.PaymenProcessedQueue, c =>
+        {
+            c.ConfigureConsumer<PaymenProcessedConsumer>(ctx);
+        });
+    });
+});
 
 // Add sql connection to the services
 builder.Services.AddScoped<IDbConnection>(sp =>
